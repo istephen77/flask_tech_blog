@@ -11,5 +11,6 @@ Features :
 7) SQLAlchemy library to connect the Flask microservice with MySQL DB.
 8) Math library to implement the logic for Pagination
 9) Added the feature to upload file by using the OS library 
+10) Used the exception handling functionality for error handling in templates
 
 
