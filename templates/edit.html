@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block body %}
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static', filename = 'assets/img/admin.jpg')}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>{{params['admin_panel']}}</h1>
+                            <span class="subheading">{{params['manage_post']}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                     <h1>Basic Actions</h1>
+        <a href="/dashboard"><button class="btn btn-primary">Dashboard Home</button></a>
+        <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+         <hr>
+   <h1>Add/Edit Post</h1>
+  <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/edit/{{sno}}" method="POST">
+                                <div class="form-floating">
+                                    <input class="form-control" id="title" name='title' type="text" placeholder="Enter your title..." data-sb-validations="required" value="{{post.title}}" />
+                                    <label for="title">Title</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="subtitle" type="text" name="subtitle" placeholder="Enter your sub-title..." data-sb-validations="required,email" value="{{post.sub_title}}"/>
+                                    <label for="subtitle">Sub-Title</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="slug" name="slug" type="text" placeholder="Enter your Slug..." data-sb-validations="required" value="{{post.slug}}"/>
+                                    <label for="slug">Slug</label>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="content" placeholder="Enter your content here..."
+                                    name="content" style="height: 12rem" data-sb-validations="required">{{post.content}}</textarea>
+                                    <label for="content">Content</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="img_file" placeholder="Enter your image file here..." name="img_file" style="height: 12rem" value="{{post.img_file}}">
+                                    <label for="img_file">Image File</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="posted_by" placeholder="Posted by..." name="posted_by" style="height: 12rem" value="{{post.posted_by}}">
+                                    <label for="posted_by">Posted By</label>
+                                </div>
+
+                                <br />
+                                <!-- Submit success message-->
+                                <!---->
+                                <!-- This is what your users will see when the form-->
+                                <!-- has successfully submitted-->
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">{{params['form_submission']}}</div>
+                                        {{params['activate_signup']}}
+                                        <br />
+                                        <a href="https://startbootstrap.com/solution/contact-forms">{{params['contact_form_link']}}</a>
+                                    </div>
+                                </div>
+                                <!-- Submit error message-->
+                                <!---->
+                                <!-- This is what your users will see when there is-->
+                                <!-- an error submitting the form-->
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">{{params['error_sending_message']}}</div></div>
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary" id="submitButton" type="submit">Submit</button>
+                            </form>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
